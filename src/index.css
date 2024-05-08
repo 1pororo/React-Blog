@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* base styles */
+* {
+  margin: 0;
+  font-family: "Poppins";
+  color: #333;
+} /* * means every element */
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #8e8cd8;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #8e8cd8;
+}
+.content {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* blog preview */
+.blog-preview {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-bottom: #ffffff 1px solid;
+}
+
+.blog-preview:hover {
+  border-bottom: #e3e3e3 1px solid;
+  box-shadow: 2px 2px 4px #dfdfdf;
+}
+
+.blog-preview h2 {
+  color: #8e8cd8;
+  margin-bottom: 8px;
+}
+
+.blog-preview a {
+  text-decoration: none;
+}
+
+/* blog-details */
+
+.blog-details h1 {
+  color: #8e8cd8;
+  font-size: 32px;
+}
+
+.blog-details div {
+  margin-top: 16px;
+  line-height: 32px;
+}
+
+.blog-details button {
+  margin: 24px auto;
+  border-radius: 10px;
+  border: 0px;
+  padding: 8px;
+  background-color: #8e8cd8;
+  color: white;
+  cursor: pointer;
+}
+
+/* create new blog form*/
+.create {
+  max-width: 500px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.create h2 {
+  color: #8e8cd8;
+  text-align: center;
+}
+
+.create form {
+  margin: 12px 0;
+}
+
+.create label {
+  font-size: 16px;
+  display: block;
+  margin: 8px 0;
+}
+
+.create input,
+.create textarea,
+.create select {
+  width: 100%;
+  max-width: 500px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+
+.create button {
+  display: block;
+  margin: 24px auto;
+  border-radius: 10px;
+  border: 0px;
+  padding: 8px;
+  background-color: #8e8cd8;
+  color: white;
+}
+
+.create button:hover {
+  background-color: #6d6bb1;
+  cursor: pointer;
+}
+
+Link {
+  text-decoration: none;
+}
+
+.button {
+  display: block;
+  margin: 12px auto 4px 0;
+  border-radius: 10px;
+  border: 0px;
+  padding: 8px;
+  background-color: #8e8cd8;
+  color: white;
+  width: fit-content;
+}
