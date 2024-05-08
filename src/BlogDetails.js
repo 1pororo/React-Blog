@@ -32,7 +32,8 @@ const BlogDetails = () => {
       blog.updatedAt.seconds * 1000 + blog.updatedAt.nanoseconds / 1000000
     );
     updateTime = timestamp.toLocaleString();
-  } else if (blog && blog.createdAt) {
+  }
+  if (blog && blog.createdAt) {
     const createTimestamp = new Date(
       blog.createdAt.seconds * 1000 + blog.createdAt.nanoseconds / 1000000
     );
