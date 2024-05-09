@@ -16,7 +16,7 @@ const BlogDetails = () => {
       return;
     }
     snapshot.then((blog) => setBlog(blog.data()));
-  }, [id]);
+  });
 
   const history = useHistory();
 

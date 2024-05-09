@@ -3,12 +3,12 @@ import { firestore } from "./firebase";
 import {
   addDoc,
   collection,
-  getDocs,
-  getDoc,
-  doc,
+  // getDocs,
+  // getDoc,
+  // doc,
   onSnapshot,
   query,
-  where,
+  // where,
   orderBy,
   serverTimestamp,
 } from "firebase/firestore";
@@ -20,7 +20,7 @@ const Demo = () => {
   const colRef = collection(firestore, "messages");
 
   //document reference
-  const docRef = doc(firestore, "messages", "KDXajkreU2GMoa0laR06s");
+  // const docRef = doc(firestore, "messages", "KDXajkreU2GMoa0laR06s");
 
   //query
   const q = query(colRef, orderBy("createdAt"));

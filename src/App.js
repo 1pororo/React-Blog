@@ -6,6 +6,7 @@ import BlogDetails from "./BlogDetails";
 import NotFound from "./NotFound";
 import Demo from "./Demo";
 import Update from "./Update";
+import Auth from "./Auth";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
+              <Auth />
+            </Route>
+            <Route exact path="/home">
               <Home />
             </Route>
             <Route path="/demo">
