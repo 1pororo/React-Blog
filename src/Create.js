@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { firestore } from "./firebase";
 
@@ -8,7 +8,7 @@ const Create = () => {
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
   const [isPending, setIsPending] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const Create = () => {
     addDoc(colRef, blog);
 
     setIsPending(false);
-    history.push("/");
+    navigate("/");
   };
 
   return (

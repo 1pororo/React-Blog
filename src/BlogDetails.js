@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDoc, deleteDoc, doc } from "firebase/firestore";
 import { firestore } from "./firebase";
@@ -18,11 +18,11 @@ const BlogDetails = () => {
     snapshot.then((blog) => setBlog(blog.data()));
   });
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteDoc(docRef).then(() => {
-      history.push("/");
+      navigate("/");
     });
   };
 
@@ -39,8 +39,6 @@ const BlogDetails = () => {
     );
     createTime = createTimestamp.toLocaleDateString();
   }
-
-  console.log(blog);
 
   return (
     <div className="blog-details">

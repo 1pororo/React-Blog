@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { updateDoc, serverTimestamp, getDoc, doc } from "firebase/firestore";
 import { firestore } from "./firebase";
 
@@ -11,7 +11,7 @@ const Update = () => {
   const [body, setBody] = useState();
   const [author, setAuthor] = useState();
   const [isPending, setIsPending] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getDoc(docRef).then((doc) => {
@@ -34,7 +34,7 @@ const Update = () => {
     });
 
     setIsPending(false);
-    history.push("/");
+    navigate("/");
   };
 
   return (

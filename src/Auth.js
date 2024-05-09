@@ -41,11 +41,26 @@ const Auth = () => {
       auth,
       emailRefIn.current.value,
       passRefIn.current.value
-    );
+    )
+      .then(() => {
+        console.log("user logged in");
+        formRefIn.current.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const logOut = (e) => {
     e.preventDefault();
+    signOut(auth)
+      .then(() => {
+        console.log("user is signed out");
+        formRefOut.current.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -65,9 +80,8 @@ const Auth = () => {
         <input type="email" name="email" ref={emailRefIn} required />
         <label htmlFor="password">Password:</label>
         <input type="password" name="password" ref={passRefIn} required />
-        <Link to="/home">
-          <button>Log in</button>
-        </Link>
+
+        <button>Log in</button>
       </form>
 
       <h1>Log Out Form</h1>
@@ -76,9 +90,7 @@ const Auth = () => {
         <input type="email" name="email" required />
         <label htmlFor="password">Password:</label>
         <input type="password" name="password" required />
-        <Link to="/">
-          <button>Log out</button>
-        </Link>
+        <button>Log out</button>
       </form>
     </div>
   );
