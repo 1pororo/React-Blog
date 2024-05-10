@@ -19,7 +19,7 @@ const Update = () => {
       setAuthor(doc.data().author);
       setBody(doc.data().body);
     });
-  }, [id]);
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -4,8 +4,9 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Auth = () => {
   const formRef = useRef();
@@ -15,8 +16,6 @@ const Auth = () => {
   const formRefIn = useRef();
   const emailRefIn = useRef();
   const passRefIn = useRef();
-
-  const formRefOut = useRef();
 
   const signIn = (e) => {
     e.preventDefault();
@@ -43,7 +42,16 @@ const Auth = () => {
       passRefIn.current.value
     )
       .then(() => {
-        console.log("user logged in");
+        console.log("logged in");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const logOut = () => {
+    signOut(auth)
+      .then(() => {
         formRefIn.current.reset();
       })
       .catch((err) => {
@@ -51,16 +59,14 @@ const Auth = () => {
       });
   };
 
-  const logOut = (e) => {
-    e.preventDefault();
-    signOut(auth)
-      .then(() => {
-        console.log("user is signed out");
-        formRefOut.current.reset();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // these return an unsubscribe function so we can assign that to a variable -- other features you can unsubscribe from is the getDoc and getDocs
+  const unsubAuth = onAuthStateChanged(auth, (user) => {
+    console.log("user status changed:", user);
+  });
+
+  const unsub = () => {
+    console.log("unsubscribing");
+    unsubAuth();
   };
 
   return (
@@ -84,14 +90,10 @@ const Auth = () => {
         <button>Log in</button>
       </form>
 
-      <h1>Log Out Form</h1>
-      <form onSubmit={logOut} ref={formRefOut}>
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" required />
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" required />
-        <button>Log out</button>
-      </form>
+      <button onClick={logOut}>Log out</button>
+
+      {/* unsubscribe from auth changes */}
+      <button onClick={unsub}>Unsubscribe</button>
     </div>
   );
 };
