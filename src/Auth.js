@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 import {
   createUserWithEmailAndPassword,
@@ -9,6 +10,8 @@ import {
 // import { Link } from "react-router-dom";
 
 const Auth = () => {
+  const navigate = useNavigate();
+
   const formRef = useRef();
   const emailRef = useRef();
   const passRef = useRef();
@@ -28,6 +31,7 @@ const Auth = () => {
       .then((cred) => {
         console.log(cred.user);
         formRef.current.reset();
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);
@@ -47,6 +51,8 @@ const Auth = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    navigate("/home");
   };
 
   const logOut = () => {

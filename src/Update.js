@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { updateDoc, serverTimestamp, getDoc, doc } from "firebase/firestore";
 import { firestore } from "./firebase";
 
@@ -7,11 +7,10 @@ const Update = () => {
   const { id } = useParams();
   const docRef = doc(firestore, "blogs", id);
 
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-  const [author, setAuthor] = useState();
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [author, setAuthor] = useState("");
   const [isPending, setIsPending] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getDoc(docRef).then((doc) => {
@@ -19,9 +18,9 @@ const Update = () => {
       setAuthor(doc.data().author);
       setBody(doc.data().body);
     });
-  });
+  }, [id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setIsPending(true);
@@ -34,7 +33,7 @@ const Update = () => {
     });
 
     setIsPending(false);
-    navigate("/");
+    return <Navigate to="home" replace={true} />;
   };
 
   return (
@@ -49,8 +48,8 @@ const Update = () => {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
-          //   possible :::  change from onchange to ref and set the different variables in the handle submit function so that it only changes at submit
         />
+
         <label>Blog body:</label>
         <textarea
           placeholder={body}
@@ -59,6 +58,7 @@ const Update = () => {
             setBody(e.target.value);
           }}
         ></textarea>
+
         <label>Blog author:</label>
         <input
           placeholder={author}

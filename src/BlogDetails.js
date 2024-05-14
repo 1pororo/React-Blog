@@ -16,13 +16,13 @@ const BlogDetails = () => {
       return;
     }
     snapshot.then((blog) => setBlog(blog.data()));
-  });
+  }, [id, docRef]);
 
   const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteDoc(docRef).then(() => {
-      navigate("/");
+      navigate("/home");
     });
   };
 
