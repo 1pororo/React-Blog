@@ -20,7 +20,7 @@ const Update = () => {
     });
   }, [id]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     setIsPending(true);
