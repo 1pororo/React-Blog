@@ -30,9 +30,10 @@ const Update = () => {
       body: body,
       author: author,
       updatedAt: serverTimestamp(),
+    }).then(() => {
+      setIsPending(false);
     });
 
-    setIsPending(false);
     return <Navigate to="home" replace={true} />;
   };
 
