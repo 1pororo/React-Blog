@@ -46,25 +46,24 @@ const Update = () => {
         <label>Blog title:</label>
         <input
           type="text"
-          placeholder={title}
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
+            console.log(e);
           }}
         />
 
         <label>Blog body:</label>
         <textarea
-          placeholder={body}
           value={body}
           onChange={(e) => {
             setBody(e.target.value);
+            console.log(e);
           }}
         ></textarea>
 
         <label>Blog author:</label>
         <input
-          placeholder={author}
           value={author}
           onChange={(e) => {
             setAuthor(e.target.value);
