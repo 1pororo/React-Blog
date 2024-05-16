@@ -99,7 +99,7 @@ const Auth = () => {
       <button onClick={logOut}>Log out</button>
 
       {/* unsubscribe from auth changes */}
-      <button onClick={unsub}>Unsubscribe</button>
+      {/* <button onClick={unsub}>Unsubscribe</button> */}
     </div>
   );
 };
