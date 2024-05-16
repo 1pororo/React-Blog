@@ -15,8 +15,8 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route exact path="/" element={<Auth />} />
-            <Route exact path="/home" element={<Home />} />
+            <Route path="/" element={<Auth />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/create" element={<Create />} />
             <Route path="/update/:id" element={<Update />} />

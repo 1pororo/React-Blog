@@ -36,7 +36,7 @@ const Update = () => {
       navigate("/home");
     });
 
-    return <Navigate to="home" replace={true} />;
+    return <Navigate to="/home" replace={true} />;
   };
 
   return (
@@ -58,7 +58,6 @@ const Update = () => {
           value={body}
           onChange={(e) => {
             setBody(e.target.value);
-            console.log(e);
           }}
         ></textarea>
 
