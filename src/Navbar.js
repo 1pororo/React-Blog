@@ -5,15 +5,16 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>The Falming Blog</h1>
       <div className="links">
-        <Link to="/home">Home</Link>
-        <Link to="/">{true ? "Log in" : "Sign out"}</Link>
+        <Link to="/home" className="hover:text-purple-1000">
+          Home
+        </Link>
+        <Link to="/" className="hover:text-purple-1000">
+          {true ? "Log out" : "Sign out"}
+        </Link>
         <Link
           to="/create"
-          style={{
-            color: "white",
-            backgroundColor: "#8E8CD8",
-            borderRadius: "8px",
-          }}
+          className=" bg-purple-1000 hover:bg-purple-1050  rounded-lg 
+          text-white"
         >
           New Post
         </Link>

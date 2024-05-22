@@ -6,27 +6,37 @@ import BlogDetails from "./BlogDetails";
 import NotFound from "./NotFound";
 import Demo from "./Demo";
 import Update from "./Update";
-import Auth from "./Auth";
+import SignUp from "./SignUp";
+import LogIn from "./LogIn";
+import React from "react";
+import { useState } from "react";
+import FunctionContext from "./FunctionContext";
+import ThemeProvider from "./ThemeContext";
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<Auth />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/demo" element={<Demo />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/update/:id" element={<Update />} />
-            <Route path="/blogs/:id" element={<BlogDetails />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </div>
-    </Router>
+    <ThemeProvider>
+      <FunctionContext />
+    </ThemeProvider>
   );
-}
 
-export default App;
+  // return (
+  //   <Router>
+  //     <div className="App">
+  //       <Navbar />
+  //       <div className="content">
+  //         <Routes>
+  //           <Route path="/" element={<SignUp />} />
+  //           <Route path="/login" element={<LogIn />} />
+  //           <Route path="/home" element={<Home />} />
+  //           <Route path="/demo" element={<Demo />} />
+  //           <Route path="/create" element={<Create />} />
+  //           <Route path="/update/:id" element={<Update />} />
+  //           <Route path="/blogs/:id" element={<BlogDetails />} />
+  //           <Route path="*" element={<NotFound />} />
+  //         </Routes>
+  //       </div>
+  //     </div>
+  //   </Router>
+  // );
+}

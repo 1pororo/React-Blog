@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "./firebase";
 import {
@@ -20,6 +20,8 @@ const Auth = () => {
   const emailRefIn = useRef();
   const passRefIn = useRef();
 
+  const [error, setError] = useState();
+
   const signIn = (e) => {
     e.preventDefault();
 
@@ -30,12 +32,13 @@ const Auth = () => {
     )
       .then((cred) => {
         console.log(cred.user);
-        formRef.current.reset();
         navigate("/home");
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
+
+    formRef.current.reset();
   };
 
   const logIn = (e) => {
@@ -47,12 +50,11 @@ const Auth = () => {
     )
       .then(() => {
         console.log("logged in");
+        navigate("/home");
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
-
-    navigate("/home");
   };
 
   const logOut = () => {
@@ -61,7 +63,7 @@ const Auth = () => {
         formRefIn.current.reset();
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
   };
 
@@ -100,6 +102,8 @@ const Auth = () => {
 
       {/* unsubscribe from auth changes */}
       {/* <button onClick={unsub}>Unsubscribe</button> */}
+
+      {error && <p>{error}</p>}
     </div>
   );
 };
