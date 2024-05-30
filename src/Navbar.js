@@ -5,11 +5,11 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>The Falming Blog</h1>
       <div className="links">
-        <Link to="/home" className="hover:text-purple-1000">
+        <Link to="/" className="hover:text-purple-1000">
           Home
         </Link>
-        <Link to="/" className="hover:text-purple-1000">
-          {true ? "Log out" : "Sign out"}
+        <Link to="/login" className="hover:text-purple-1000">
+          Log out
         </Link>
         <Link
           to="/create"

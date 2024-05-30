@@ -1,25 +1,50 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
 
-const SignUp = () => {
+const SignUp = ({ setLogged }) => {
   const emailRef = useRef();
   const passRef = useRef();
   const passConfirmRef = useRef();
+  const { signup, currentUser } = useAuth(); // I DONT UNDERSTAND THIS PART
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
-  const handleClick = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    navigate("/home");
-  };
+
+    if (passRef.current.value !== passConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passRef.current.value);
+    } catch {
+      setError("Failed to create an account");
+    }
+    setLoading(false);
+    navigate("/");
+  }
 
   return (
     <div className="flex items-center justify-center flex-wrap">
       <div className="w-full">
         <form
+          onSubmit={handleSubmit}
           className="mx-auto  p-8 border border-solid border-black "
           style={{ minWidth: "400px" }}
         >
           <h2 className="text-3xl mb-2 text-center">Sign Up</h2>
+          {error && (
+            <p className="bg-red-500 text-white border-solid border flex justify-center py-2  my-3 border-black">
+              {error}
+            </p>
+          )}
+          {}
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -44,9 +69,10 @@ const SignUp = () => {
             ref={passConfirmRef}
             className="block w-full box-border p-1 mt-1 mb-2"
           />
+
           <button
+            disabled={loading}
             className="mt-5 border-none text-white w-full p-1 text-base rounded bg-purple-1000 hover:bg-purple-1050"
-            onClick={handleClick}
           >
             Sign Up
           </button>

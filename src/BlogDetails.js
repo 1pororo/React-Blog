@@ -22,7 +22,7 @@ const BlogDetails = () => {
 
   const handleDelete = () => {
     deleteDoc(docRef).then(() => {
-      navigate("/home");
+      navigate("/");
     });
   };
 

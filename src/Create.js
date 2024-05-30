@@ -27,7 +27,7 @@ const Create = () => {
     addDoc(colRef, blog);
 
     setIsPending(false);
-    navigate("/home");
+    navigate("/");
   };
 
   return (

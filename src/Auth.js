@@ -32,7 +32,7 @@ const Auth = () => {
     )
       .then((cred) => {
         console.log(cred.user);
-        navigate("/home");
+        navigate("/");
       })
       .catch((err) => {
         setError(err.message);
@@ -50,7 +50,7 @@ const Auth = () => {
     )
       .then(() => {
         console.log("logged in");
-        navigate("/home");
+        navigate("/");
       })
       .catch((err) => {
         setError(err.message);

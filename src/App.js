@@ -9,34 +9,28 @@ import Update from "./Update";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import React from "react";
-import { useState } from "react";
-import FunctionContext from "./FunctionContext";
-import ThemeProvider from "./ThemeContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <FunctionContext />
-    </ThemeProvider>
+    <Router>
+      <AuthProvider>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/demo" element={<Demo />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/update/:id" element={<Update />} />
+              <Route path="/blogs/:id" element={<BlogDetails />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
+      </AuthProvider>
+    </Router>
   );
-
-  // return (
-  //   <Router>
-  //     <div className="App">
-  //       <Navbar />
-  //       <div className="content">
-  //         <Routes>
-  //           <Route path="/" element={<SignUp />} />
-  //           <Route path="/login" element={<LogIn />} />
-  //           <Route path="/home" element={<Home />} />
-  //           <Route path="/demo" element={<Demo />} />
-  //           <Route path="/create" element={<Create />} />
-  //           <Route path="/update/:id" element={<Update />} />
-  //           <Route path="/blogs/:id" element={<BlogDetails />} />
-  //           <Route path="*" element={<NotFound />} />
-  //         </Routes>
-  //       </div>
-  //     </div>
-  //   </Router>
-  // );
 }

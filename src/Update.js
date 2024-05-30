@@ -33,10 +33,10 @@ const Update = () => {
       updatedAt: serverTimestamp(),
     }).then(() => {
       setIsPending(false);
-      navigate("/home");
+      navigate("/");
     });
 
-    return <Navigate to="/home" replace={true} />;
+    return <Navigate to="/" replace={true} />;
   };
 
   return (
