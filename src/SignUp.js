@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
 
-const SignUp = ({ setLogged }) => {
+const SignUp = () => {
   const emailRef = useRef();
   const passRef = useRef();
   const passConfirmRef = useRef();
@@ -27,7 +27,7 @@ const SignUp = ({ setLogged }) => {
       setError("Failed to create an account");
     }
     setLoading(false);
-    navigate("/");
+    navigate("/home");
   }
 
   return (

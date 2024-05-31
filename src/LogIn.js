@@ -25,7 +25,7 @@ const LogIn = () => {
       setError("Failed to log in");
     }
     setLoading(false);
-    navigate("/");
+    navigate("/home");
   }
 
   return (

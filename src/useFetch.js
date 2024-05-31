@@ -7,38 +7,24 @@ const useFetch = (colTitle) => {
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
+  const q = query(colRef, orderBy("createdAt", "desc"));
 
-  try {
-    useEffect(() => {
-      const abortCont = new AbortController();
-      const q = query(colRef, orderBy("createdAt", "desc"));
-
-      onSnapshot(
-        q,
-        (snapshot) => {
-          if (snapshot.empty) {
-            setError("could not fetch the data for that resource");
-            setIsPending(false);
-            return;
-          }
-
-          setData(
-            snapshot.docs.map((doc) => {
-              return { ...doc.data(), id: doc.id };
-            })
-          );
-
-          setIsPending(false);
-          setError(null);
-        },
-        { signal: abortCont.signal }
-      );
-    }, [colRef]);
-  } catch (err) {
-    if (err.name === "Abort Message") {
-      return;
+  useEffect(() => {
+    try {
+      onSnapshot(q, (snapshot) => {
+        setData(
+          snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          })
+        );
+        setIsPending(false);
+        setError(null);
+      });
+    } catch {
+      setIsPending(false);
+      setError("could not fetch the data for that resource");
     }
-  }
+  }, []);
 
   return { data, isPending, error };
 };

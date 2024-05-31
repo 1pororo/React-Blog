@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="navbar">
       <h1>The Falming Blog</h1>
       <div className="links">
-        <Link to="/" className="hover:text-purple-1000">
+        <Link to="/home" className="hover:text-purple-1000">
           Home
         </Link>
         <Link to="/login" className="hover:text-purple-1000">

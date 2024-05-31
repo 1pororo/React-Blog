@@ -8,6 +8,7 @@ import Demo from "./Demo";
 import Update from "./Update";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
+import Dashboard from "./Dashboard";
 import React from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -19,7 +20,8 @@ export default function App() {
           <Navbar />
           <div className="content">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<LogIn />} />
               <Route path="/demo" element={<Demo />} />
