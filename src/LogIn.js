@@ -7,7 +7,6 @@ const LogIn = () => {
 
   const { login } = useAuth();
 
-  const formRef = useRef();
   const emailRef = useRef();
   const passRef = useRef();
 
@@ -25,7 +24,7 @@ const LogIn = () => {
       setError("Failed to log in");
     }
     setLoading(false);
-    navigate("/home");
+    navigate("/");
   }
 
   return (

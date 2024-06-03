@@ -27,7 +27,7 @@ const SignUp = () => {
       setError("Failed to create an account");
     }
     setLoading(false);
-    navigate("/home");
+    navigate("/");
   }
 
   return (

@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    return signOut(auth);
+    return signOut(auth).then((user) => setCurrentUser(user));
   }
 
   useEffect(() => {

@@ -11,7 +11,10 @@ export default function Dashboard() {
   async function handleClick() {
     setError("");
     try {
-      await logout();
+      await logout().then((user) => {
+        console.log(user);
+        console.log(currentUser);
+      });
       navigate("/login");
     } catch {
       setError("Failed to log out");
