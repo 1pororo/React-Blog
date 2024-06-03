@@ -6,14 +6,14 @@ const Navbar = () => {
       <h1>The Falming Blog</h1>
       <div className="links">
         <Link to="/home" className="hover:text-purple-1000">
-          Home
+          Posts
         </Link>
-        <Link to="/login" className="hover:text-purple-1000">
-          Log out
+        <Link to="/" className="hover:text-purple-1000">
+          Profile
         </Link>
         <Link
           to="/create"
-          className=" bg-purple-1000 hover:bg-purple-1050  rounded-lg 
+          className="bg-purple-1000 hover:bg-purple-1050  rounded-lg 
           text-white"
         >
           New Post

@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  function signout() {
+  function logout() {
     return signOut(auth);
   }
 
@@ -43,12 +43,8 @@ export function AuthProvider({ children }) {
     currentUser,
     signup,
     login,
-    signout,
+    logout,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {currentUser && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

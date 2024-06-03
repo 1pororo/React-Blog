@@ -6,7 +6,7 @@ const SignUp = () => {
   const emailRef = useRef();
   const passRef = useRef();
   const passConfirmRef = useRef();
-  const { signup, currentUser } = useAuth(); // I DONT UNDERSTAND THIS PART
+  const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

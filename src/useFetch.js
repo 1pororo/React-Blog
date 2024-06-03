@@ -24,7 +24,7 @@ const useFetch = (colTitle) => {
       setIsPending(false);
       setError("could not fetch the data for that resource");
     }
-  }, []);
+  }, [q]);
 
   return { data, isPending, error };
 };
