@@ -3,8 +3,12 @@ import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  updateEmail,
+  updatePassword,
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
@@ -28,11 +32,28 @@ export function AuthProvider({ children }) {
     return signOut(auth).then((user) => setCurrentUser(user));
   }
 
+  function passReset(email) {
+    return sendPasswordResetEmail(auth, email);
+  }
+
+  function editEmail(email) {
+    return updateEmail(auth.currentUser, email).then(
+      sendEmailVerification(auth.currentUser)
+    );
+  }
+
+  function editPassword(password) {
+    return updatePassword(auth.currentUser, password);
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        console.log("state changed");
+        console.log("state changed", user);
+      } else {
+        setCurrentUser();
+        console.log(user);
       }
     });
 
@@ -44,6 +65,9 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
+    passReset,
+    editEmail,
+    editPassword,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

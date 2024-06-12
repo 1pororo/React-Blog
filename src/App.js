@@ -12,6 +12,8 @@ import Dashboard from "./Dashboard";
 import React from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./PrivateRoute";
+import PasswordReset from "./PasswordReset";
+import EditProfile from "./EditProfile";
 
 export default function App() {
   return (
@@ -24,14 +26,14 @@ export default function App() {
               <Route
                 path="/"
                 element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
+                  <PrivateRoute element={<Dashboard />} redirect="/login" />
                 }
               />
+              <Route path="/edit-profile" element={<EditProfile />} />
               <Route path="/home" element={<Home />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<LogIn />} />
+              <Route path="/password-reset" element={<PasswordReset />} />
               <Route path="/demo" element={<Demo />} />
               <Route path="/create" element={<Create />} />
               <Route path="/update/:id" element={<Update />} />

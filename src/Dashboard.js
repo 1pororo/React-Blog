@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "./contexts/AuthContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
@@ -11,10 +11,7 @@ export default function Dashboard() {
   async function handleClick() {
     setError("");
     try {
-      await logout().then((user) => {
-        console.log(user);
-        console.log(currentUser);
-      });
+      await logout();
       navigate("/login");
     } catch {
       setError("Failed to log out");
@@ -27,6 +24,9 @@ export default function Dashboard() {
         {error && <>{error}</>}
         <h2>Profile</h2>
         <strong>Email:</strong> {currentUser && currentUser.email}
+        <div>
+          <Link to="/edit-profile">Edit profile</Link>
+        </div>
       </div>
       <button
         onClick={handleClick}
